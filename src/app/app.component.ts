@@ -11,3 +11,9 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent {
   title = 'TP2';
 }
+
+export class FormComponent{
+
+  nom : String = "Toto";
+  valid : boolean = true;
+}
