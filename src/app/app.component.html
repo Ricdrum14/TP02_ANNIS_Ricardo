@@ -1,5 +1,8 @@
-<p>Mon premier composant !</p>
+<app-tetiere></app-tetiere>
 
-{{nom}}
+<app-compte-formulaire></app-compte-formulaire>
 
-<button [disabled]="!valis">Evoyer</button>  
+<!-- Récapitulatif, affiché uniquement après soumission -->
+<app-recapitulatif *ngIf="submitted" [client]="client"></app-recapitulatif>
+
+<app-footer></app-footer>
