@@ -1,64 +1,134 @@
-<form (ngSubmit)="onSubmit()" #clientForm="ngForm">
-    <div>
-      <label for="nom">Nom:</label>
-      <input type="text" id="nom" name="nom" [(ngModel)]="client.nom" required>
-    </div>
-    <div>
-      <label for="prenom">Prénom:</label>
-      <input type="text" id="prenom" name="prenom" [(ngModel)]="client.prenom" required>
-    </div>
-    <!-- Ajoute les autres champs ici : adresse, ville, etc. -->
-     <div>
-        <label for="adresse">Adresse:</label>
-        <input type="text" id="adresse" name="adresse" [(ngModel)]="client.adresse" required>
+<form (ngSubmit)="onSubmit(clientForm)" #clientForm="ngForm" class="needs-validation" novalidate>
+   <!-- Nom -->
+   <div class="mb-3">
+     <label for="nom" class="form-label">Nom:</label>
+     <input type="text" id="nom" name="nom" [(ngModel)]="client.nom" autocomplete="family-name" 
+            class="form-control" pattern="^[A-Za-zÀ-ÿ\s-]+$" #nom="ngModel" required 
+            [ngClass]="{'is-invalid': nom.invalid && (nom.touched || clientForm.submitted)}">
+     <div *ngIf="nom.invalid && (nom.touched || clientForm.submitted)" class="text-danger">
+        Nom invalide : lettres uniquement.
      </div>
-     <div>
-        <label for="ville">Ville:</label>
-        <input type="text" id="ville" name="ville" [(ngModel)]="client.ville" required>
+   </div>
+ 
+   <!-- Prénom -->
+   <div class="mb-3">
+     <label for="prenom" class="form-label">Prénom:</label>
+     <input type="text" id="prenom" name="prenom" [(ngModel)]="client.prenom" autocomplete="given-name" 
+            class="form-control" pattern="^[A-Za-zÀ-ÿ\s-]+$" #prenom="ngModel" required 
+            [ngClass]="{'is-invalid': prenom.invalid && (prenom.touched || clientForm.submitted)}">
+     <div *ngIf="prenom.invalid && (prenom.touched || clientForm.submitted)" class="text-danger">
+        Prénom invalide : lettres uniquement.
      </div>
-     <div>
-        <label for="codePostal">Code Postal:</label>
-        <input type="text" id="codePostal" name="codePostal" [(ngModel)]="client.codePostal" required>
+   </div>
+ 
+   <!-- Adresse -->
+   <div class="mb-3">
+     <label for="adresse" class="form-label">Adresse:</label>
+     <input type="text" id="adresse" name="adresse" [(ngModel)]="client.adresse" autocomplete="street-address" 
+            class="form-control" pattern="^[a-zA-Z0-9\s,.'-]+$" #adresse="ngModel" required 
+            [ngClass]="{'is-invalid': adresse.invalid && (adresse.touched || clientForm.submitted)}">
+     <div *ngIf="adresse.invalid && (adresse.touched || clientForm.submitted)" class="text-danger">
+        Adresse invalide.
      </div>
-     <div>
-        <label for="telephone">Téléphone:</label>
-        <input type="text" id="telephone" name="telephone" [(ngModel)]="client.telephone" required>
+   </div>
+ 
+   <!-- Ville -->
+   <div class="mb-3">
+     <label for="ville" class="form-label">Ville:</label>
+     <input type="text" id="ville" name="ville" [(ngModel)]="client.ville" autocomplete="address-level2" 
+            class="form-control" pattern="^[A-Za-zÀ-ÿ\s-]+$" #ville="ngModel" required 
+            [ngClass]="{'is-invalid': ville.invalid && (ville.touched || clientForm.submitted)}">
+     <div *ngIf="ville.invalid && (ville.touched || clientForm.submitted)" class="text-danger">
+        Ville invalide : lettres uniquement, avec espaces et tirets.
      </div>
-     <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" [(ngModel)]="client.email" required>
+   </div>
+ 
+   <!-- Code Postal -->
+   <div class="mb-3">
+     <label for="codePostal" class="form-label">Code Postal:</label>
+     <input type="text" id="codePostal" name="codePostal" [(ngModel)]="client.codePostal" autocomplete="postal-code" 
+            class="form-control" pattern="^\d{5}$" #codePostal="ngModel" required 
+            [ngClass]="{'is-invalid': codePostal.invalid && (codePostal.touched || clientForm.submitted)}">
+     <div *ngIf="codePostal.invalid && (codePostal.touched || clientForm.submitted)" class="text-danger">
+        Code Postal invalide : 5 chiffres requis.
      </div>
-     <div>
-        <label for="login">Login:</label>
-        <input type="text" id="login" name="login" [(ngModel)]="client.login" required>
+   </div>
+ 
+   <!-- Téléphone -->
+   <div class="mb-3">
+     <label for="telephone" class="form-label">Téléphone:</label>
+     <input type="text" id="telephone" name="telephone" [(ngModel)]="client.telephone" autocomplete="tel" 
+            class="form-control" pattern="^\+?\d{1,4}[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$" #telephone="ngModel" required 
+            [ngClass]="{'is-invalid': telephone.invalid && (telephone.touched || clientForm.submitted)}">
+     <div *ngIf="telephone.invalid && (telephone.touched || clientForm.submitted)" class="text-danger">
+        Téléphone invalide : format 01 23 45 67 89.
      </div>
-     <div>
-        <label for="password">Mot de passe:</label>
-        <input type="password" id="password" name="password" [(ngModel)]="client.password" required>
+   </div>
+ 
+   <!-- Email -->
+   <div class="mb-3">
+     <label for="email" class="form-label">Email:</label>
+     <input type="email" id="email" name="email" [(ngModel)]="client.email" autocomplete="email" 
+            class="form-control" #email="ngModel" required 
+            [ngClass]="{'is-invalid': email.invalid && (email.touched || clientForm.submitted)}">
+     <div *ngIf="email.invalid && (email.touched || clientForm.submitted)" class="text-danger">
+        Email invalide.
      </div>
-     <div>
-        <label for="civilite">Civilite:</label>
-        <select id="civilite" name="civilite" [(ngModel)]="client.civilite" required>
-            <option value="M">M</option>
-            <option value="Mme">Mme</option>
-            <option value="non-specifie">Non Specifie</option>
-        </select>
+   </div>
+ 
+   <!-- Login -->
+   <div class="mb-3">
+     <label for="login" class="form-label">Login:</label>
+     <input type="text" id="login" name="login" [(ngModel)]="client.login" autocomplete="username" 
+            class="form-control" pattern="^(?:[a-zA-Z0-9._-]{3,20}|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$"  #login="ngModel" required 
+            [ngClass]="{'is-invalid': login.invalid && (login.touched || clientForm.submitted)}">
+     <div *ngIf="login.invalid && (login.touched || clientForm.submitted)" class="text-danger">
+        Login invalide : 3-20 caractères, lettres, chiffres, points, underscores, ou tirets.
      </div>
-    
-    <div>
-      <label for="pays">Pays:</label>
-      <select id="pays" name="pays" [(ngModel)]="client.pays" required>
-        <option value="france">France</option>
-        <option value="belgique">Belgique</option>
-        <option value="suisse">Suisse</option>
-        <option value="angleterre"> Angleterre</option>
-        <option value="espagne"> Espagne</option>
-        <option value="italie"> Italie</option>
-      </select>
-    </div>
-
-    <div>
-      <button type="submit" [disabled]="clientForm.invalid">Soumettre</button>
-    </div>
-  </form>
-
+   </div>
+ 
+   <!-- Mot de passe -->
+   <div class="mb-3">
+     <label for="password" class="form-label">Mot de passe:</label>
+     <input type="password" id="password" name="password" [(ngModel)]="client.password" autocomplete="new-password" 
+            class="form-control" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&\-])[A-Za-z\d@$!%*?&\-]{8,}$" #password="ngModel" required 
+            [ngClass]="{'is-invalid': password.invalid && (password.touched || clientForm.submitted)}">
+     <div *ngIf="password.invalid && (password.touched || clientForm.submitted)" class="text-danger">
+      Mot de passe invalide : Au moins 8 caractères, avec une majuscule, une minuscule, un chiffre, et un caractère spécial.
+     </div>
+   </div>
+ 
+   <!-- Civilité -->
+   <div class="mb-3">
+     <label for="civilite" class="form-label">Civilité:</label>
+     <select id="civilite" name="civilite" [(ngModel)]="client.civilite" autocomplete="honorific-prefix" 
+             class="form-select" required>
+       <option value="M">M</option>
+       <option value="Mme">Mme</option>
+       <option value="non-specifie">Non Spécifié</option>
+     </select>
+   </div>
+ 
+   <!-- Pays -->
+   <div class="mb-3">
+     <label for="pays" class="form-label">Pays:</label>
+     <select id="pays" name="pays" [(ngModel)]="client.pays" autocomplete="country" class="form-select" required>
+       <option value="france">France</option>
+       <option value="belgique">Belgique</option>
+       <option value="suisse">Suisse</option>
+       <option value="angleterre">Angleterre</option>
+       <option value="espagne">Espagne</option>
+       <option value="italie">Italie</option>
+     </select>
+     <div *ngIf="clientForm.controls['pays']?.invalid && clientForm.controls['pays']?.touched" class="text-danger">
+        Sélectionnez un pays.
+     </div>
+   </div>
+ 
+   <!-- Bouton de soumission -->
+   <div class="mb-3">
+     <button type="submit" class="btn btn-primary" [disabled]="clientForm.invalid">Soumettre</button>
+   </div>
+ 
+ </form>
+ 

@@ -8,6 +8,7 @@ import { RecapitulatifComponent } from './recapitulatif/recapitulatif.component'
 import { FormsModule } from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -26,11 +27,16 @@ import { FormsModule } from '@angular/forms';
 
 export class AppComponent {
 
-  client:any;
+   
+  recapData:any=null;// stock les données du client
+
   submitted=false;
 
-  onSubmit(clientData:any){
-    this.client=clientData;
+  onSubmit(clientData: any){
+
+    console.log('Formulaire soumis avec les données :', clientData);
+    
+    this.recapData={...clientData}; // on copie les donnees du client dans recapData
     this.submitted=true;
   }
 }

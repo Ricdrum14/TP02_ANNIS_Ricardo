@@ -1,8 +1,9 @@
 <app-tetiere></app-tetiere>
 
-<app-compte-formulaire></app-compte-formulaire>
+<!-- Le formulaire de saisie émet des données avec l'événement formSubmitted -->
+<app-compte-formulaire (formSubmitted)="onSubmit($event)"></app-compte-formulaire>
 
 <!-- Récapitulatif, affiché uniquement après soumission -->
-<app-recapitulatif *ngIf="submitted" [client]="client"></app-recapitulatif>
+<app-recapitulatif *ngIf="submitted" [client]="recapData"></app-recapitulatif>
 
 <app-footer></app-footer>
