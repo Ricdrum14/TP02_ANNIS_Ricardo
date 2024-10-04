@@ -1,0 +1,10 @@
+.card-body p {
+    font-size: 1.1rem;  /* Taille légèrement plus grande */
+    margin-bottom: 10px; /* Espace entre les lignes */
+}
+
+.card-header h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}

@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-tetiere',
   standalone: true,
   imports: [],
   templateUrl: './tetiere.component.html',
-  styleUrl: './tetiere.component.css'
+  styleUrls: ['./tetiere.component.css']
 })
 export class TetiereComponent {
 

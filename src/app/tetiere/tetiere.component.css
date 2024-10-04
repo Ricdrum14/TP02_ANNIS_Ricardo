@@ -1,0 +1,7 @@
+.custom-font {
+    font-family: 'Arial', sans-serif; 
+    font-size: 2.5rem; 
+    font-weight: bold; /* Épaissir le texte */
+    text-transform: uppercase; /* Convertir le texte en majuscules */
+    letter-spacing: 2px; /* Espacer légèrement les lettres */
+}
