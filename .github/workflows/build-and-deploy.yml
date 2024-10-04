@@ -23,7 +23,7 @@ jobs:
       - name: Copy build files to cnamApp
         run: |
           
-              cp -r dist/tp2/* ../CNAM_app/cnamApp/deployApp/
+              cp -r dist/tp2/* ../../CNAM_app/cnamApp/deployApp/
         
 
       # Étape 4: Commit et push des fichiers dans cnamApp
