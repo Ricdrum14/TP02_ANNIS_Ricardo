@@ -109,7 +109,7 @@
                       class="form-select" required>
                 <option value="M">M</option>
                 <option value="Mme">Mme</option>
-                <option value="non-specifie">Non Spécifié</option>
+                <option value="Non spécifié">Non Spécifié</option>
               </select>
             </div>
           
@@ -117,12 +117,12 @@
             <div class="mb-3">
               <label for="pays" class="form-label">Pays:</label>
               <select id="pays" name="pays" [(ngModel)]="client.pays" autocomplete="country" class="form-select" required>
-                <option value="france">France</option>
-                <option value="belgique">Belgique</option>
-                <option value="suisse">Suisse</option>
-                <option value="angleterre">Angleterre</option>
-                <option value="espagne">Espagne</option>
-                <option value="italie">Italie</option>
+                <option value="France">France</option>
+                <option value="Belgique">Belgique</option>
+                <option value="Suisse">Suisse</option>
+                <option value="Angleterre">Angleterre</option>
+                <option value="Espagne">Espagne</option>
+                <option value="Italie">Italie</option>
               </select>
               <div *ngIf="clientForm.controls['pays']?.invalid && clientForm.controls['pays']?.touched" class="text-danger">
                   Sélectionnez un pays.
