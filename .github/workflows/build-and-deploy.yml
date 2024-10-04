@@ -22,12 +22,9 @@ jobs:
       # Étape 3: Copier les fichiers de build dans le dossier cnamApp/deployApp
       - name: Copy build files to cnamApp
         run: |
-          # Vérifier si le répertoire cnamApp existe
-          if [ -d "../CNAM_app/cnamApp" ]; then
+          
               cp -r dist/tp2/* ../CNAM_app/cnamApp/deployApp/
-          else
-              echo "Dossier cnamApp non trouvé. Assurez-vous que CNAM_app/cnamApp existe."
-              exit 1
+        
 
       # Étape 4: Commit et push des fichiers dans cnamApp
       - name: Commit and push to cnamApp
