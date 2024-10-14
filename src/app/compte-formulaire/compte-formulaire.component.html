@@ -29,7 +29,7 @@
             <div class="mb-3">
               <label for="adresse" class="form-label">Adresse:</label>
               <input type="text" id="adresse" name="adresse" [(ngModel)]="client.adresse" autocomplete="street-address" 
-                      class="form-control" pattern="^[a-zA-Z0-9\s,.'-]+$" #adresse="ngModel" required 
+                      class="form-control" pattern="^[a-zA-ZÀ-ÿ0-9\s,.'-]+$" #adresse="ngModel" required 
                       [ngClass]="{'is-invalid': adresse.invalid && (adresse.touched || clientForm.submitted)}">
               <div *ngIf="adresse.invalid && (adresse.touched || clientForm.submitted)" class="text-danger">
                   Adresse invalide.
